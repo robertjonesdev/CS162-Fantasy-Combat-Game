@@ -1,41 +1,39 @@
-#Adapted from the tutorial "How to Create a Simple Makefile - Introduction to Makefiles"
-#https://www.youtube.com/watch?v=_r7i5X0rXJk
-#and "A Simple Makefile Tutorial"
-#http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/
+#Project name, used for naming zip
+PROJECT = Project3_Jones_Robert
 
-CC = g++
-CFLAGS = -g -std=c++11
-OBJ = main.o Menu.o Game.o Character.o Barbarian.o BlueMen.o HarryPotter.o Medusa.o Vampire.o
+#Final executable name
+BIN = Fantasy-Combat
 
-output: $(OBJ)
-	$(CC) -o $@ $(CFLAGS) $(OBJ)
+#automatically includes all cpp files in directory
+SOURCES = $(wildcard *.cpp)
+OBJECTS = $(SOURCES:%.cpp=%.o)
 
-main.o: main.cpp
-	$(CC) -c $(CFLAGS) $^
+#generates dependencies automatically, adopted from https://stackoverflow.com/a/21086223
+CXX = g++
+CXXFLAGS = -std=c++11 -MD -MP -g
+$(BIN): $(OBJECTS)
+	${CXX} ${CXXFLAGS} -o $@ $^
 
-Menu.o: Menu.cpp
-	$(CC) -c $(CFLAGS) $^
+-include $(SOURCES:%.cpp=%.d)
 
-Game.o: Game.cpp
-	$(CC) -c $(CFLAGS) $^
+#allows memory leak checking with "make valgrind"
+.PHONY : valgrind
+valgrind:
+	@valgrind --leak-check=full --track-origins=yes ./$(BIN)
 
-Character.o: Character.cpp
-	$(CC) -c $(CFLAGS) $^
+#zips all cpp hpp pdf and makefiles with "make zip"
+.PHONY : zip
+zip:
+	zip $(PROJECT).zip *.cpp *.hpp *.pdf makefile
 
-Barbarian.o: Barbarian.cpp
-	$(CC) -c $(CFLAGS) $^
+#makes "make clean" work on Windows too, adapted from https://stackoverflow.com/questions/2463037/calling-windows-commands-e-g-del-from-a-gnu-makefile
+ifeq ($(OS),Windows_NT)
+    RM = cmd /C del /Q /F
+else
+    RM = rm -f
+endif
 
-BlueMen.o: BlueMen.cpp
-	$(CC) -c $(CFLAGS) $^
-
-HarryPotter.o: HarryPotter.cpp
-		$(CC) -c $(CFLAGS) $^
-
-Medusa.o: Medusa.cpp
-		$(CC) -c $(CFLAGS) $^
-
-Vampire.o: Vampire.cpp
-		$(CC) -c $(CFLAGS) $^
-
+#removes binary, .d (dependency), .o files
+.PHONY : clean
 clean:
-	rm -f core $(OBJ) *~ output
+	$(RM) $(BIN) *.d *.o core
