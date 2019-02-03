@@ -8,7 +8,9 @@
 #include <iostream>
 #include <vector>         //For the menu
 #include <string>         //Menu title
+#include <ctime>
 #include "Menu.hpp"       //Menu object
+#include "Game.hpp"
 
 using std::string;
 using std::vector;
@@ -17,31 +19,26 @@ using std::endl;
 
 int main()
 {
-    //Create the menu.
-    string menuTitle = "\n\tProject 3: ";
+    srand(time(NULL));
+
+    //Create the menu & menu options.
+    string menuTitle = "\n\tProject 3: Fantasy Combat Game\n\t------------------------------";
     vector<string> menuList;
-    menuList.push_back("");
-    menuList.push_back("");
-    menuList.push_back("");
+    menuList.push_back("Play again");
     Menu menu(menuTitle, menuList);
+
+    Game myGame;
 
     //Loop the menu until user quits.
     while (!menu.getQuit())
     {
+        myGame.playGame();
         menu.printMenu();
         switch(menu.getChoice())
         {
             case 1:
             {
-
-                break;
-            }
-            case 2:
-            {
-                break;
-            }
-            case 3:
-            {
+                myGame.playGame();
                 break;
             }
         }

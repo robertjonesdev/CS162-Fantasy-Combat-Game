@@ -1,7 +1,12 @@
 #ifndef HARRYPOTTER_HPP
 #define HARRYPOTTER_HPP
 
-class HarryPotter
+#include "Character.hpp"
+#include <string>
+
+using std::string;
+
+class HarryPotter : public Character
 {
     private:
 
@@ -10,6 +15,8 @@ class HarryPotter
     public:
         HarryPotter();
         virtual ~HarryPotter();
-
+        virtual void attack(Character*&);
+        virtual void defend(int);
+        virtual string getType();
 };
 #endif //HarryPotter

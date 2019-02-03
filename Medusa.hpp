@@ -1,15 +1,22 @@
-#ifndef MADUSA_HPP
-#define MADUSA_HPP
+#ifndef MEDUSA_HPP
+#define MEDUSA_HPP
 
-class Madusa
+#include "Character.hpp"
+#include <string>
+
+using std::string;
+
+class Medusa : public Character
 {
     private:
 
     protected:
 
     public:
-        Madusa();
-        virtual ~Madusa();
-
+        Medusa();
+        virtual ~Medusa();
+        virtual void attack(Character*&);
+        virtual void defend(int);
+        virtual string getType();
 };
-#endif //Madusa
+#endif //Medusa

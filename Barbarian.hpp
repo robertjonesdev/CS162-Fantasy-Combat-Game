@@ -1,7 +1,12 @@
 #ifndef BARBARIAN_HPP
 #define BARBARIAN_HPP
 
-class Barbarian
+#include "Character.hpp"
+#include <string>
+
+using std::string;
+
+class Barbarian: public Character
 {
     private:
 
@@ -10,6 +15,8 @@ class Barbarian
     public:
         Barbarian();
         virtual ~Barbarian();
-
+        virtual void attack(Character*&);
+        virtual void defend(int);
+        virtual string getType();
 };
 #endif //Barbarian

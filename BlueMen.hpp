@@ -1,7 +1,12 @@
 #ifndef BLUEMEN_HPP
 #define BLUEMEN_HPP
 
-class BlueMen
+#include "Character.hpp"
+#include <string>
+
+using std::string;
+
+class BlueMen : public Character
 {
     private:
 
@@ -10,6 +15,8 @@ class BlueMen
     public:
         BlueMen();
         virtual ~BlueMen();
-
+        virtual void attack(Character*&);
+        virtual void defend(int);
+        virtual string getType();
 };
 #endif //BlueMen
