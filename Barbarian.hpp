@@ -1,3 +1,9 @@
+/***************************************************************
+** Program name: Project 3 Fantasy Combate Game (CS162 Winter 2019)
+** Author:       Robert Jones
+** Date:         February 6, 2019
+** Description:  Barbarian class definition file.
+***************************************************************/
 #ifndef BARBARIAN_HPP
 #define BARBARIAN_HPP
 
@@ -8,15 +14,11 @@ using std::string;
 
 class Barbarian: public Character
 {
-    private:
-
-    protected:
-
     public:
         Barbarian();
-        virtual ~Barbarian();
-        virtual void attack(Character*&);
-        virtual void defend(int);
+        virtual ~Barbarian() {};
+        virtual int attack(SpecialAbility&);
+        virtual void defend(int, SpecialAbility);
         virtual string getType();
 };
 #endif //Barbarian

@@ -2,16 +2,6 @@
 #include <cstdlib>
 #include "Dice.hpp"
 
-Dice::Dice()
-{
-
-}
-
-Dice::~Dice()
-{
-    
-}
-
 int Dice::Roll(int numDice, int numSides)
 {
     int rollTotal = 0;

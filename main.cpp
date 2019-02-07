@@ -1,21 +1,29 @@
-/*********************************************************************
-** Program name:  Project 3 CS 162-400, Winter 2019)
-** Author:        Robert Jones
-** Date:          February 2, 2019
-** Description:   main.cpp, Main Class Implementation
-**********************************************************************/
-
-#include <iostream>
+/***************************************************************
+** Program name: Project 3 Fantasy Combate Game (CS162 Winter 2019)
+** Author:       Robert Jones
+** Date:         February 6, 2019
+** Description:  This is a Fantasy Combat Game that contains characters
+**               of Vampire, Barbarian, Blue Men, Medusa, and Harry Potter.
+**               The characters also have their own characteristics as well
+**               as special abilities.
+**
+**              Two characters will be chosen by the user and they will
+**              enter in combat with each other.
+**
+**              Combat will consist of rounds until one player dies.
+**              Each round consists of consists of an attack roll and
+**              defend roll from each player which determines how much damage
+**              is taken by the players.
+***************************************************************/
+#include <iostream>       //Console input and output
 #include <vector>         //For the menu
 #include <string>         //Menu title
-#include <ctime>
+#include <ctime>          //Random
 #include "Menu.hpp"       //Menu object
 #include "Game.hpp"
 
 using std::string;
 using std::vector;
-using std::cout;
-using std::endl;
 
 int main()
 {
@@ -27,21 +35,14 @@ int main()
     menuList.push_back("Play again");
     Menu menu(menuTitle, menuList);
 
-    Game myGame;
-
     //Loop the menu until user quits.
     while (!menu.getQuit())
     {
+        Game myGame;
         myGame.playGame();
+
         menu.printMenu();
-        switch(menu.getChoice())
-        {
-            case 1:
-            {
-                myGame.playGame();
-                break;
-            }
-        }
+        menu.getChoice();
     }
-  return 0;
+    return 0;
 }

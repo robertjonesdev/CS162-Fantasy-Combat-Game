@@ -1,4 +1,10 @@
-
+/***************************************************************
+** Program name: Project 3 Fantasy Combate Game (CS162 Winter 2019)
+** Author:       Robert Jones
+** Date:         February 6, 2019
+** Description:  Barbarian class implementation file. 
+**               Inherits from Character class.
+***************************************************************/
 #include "Barbarian.hpp"
 #include "Dice.hpp"
 #include <iostream>
@@ -19,41 +25,55 @@ Barbarian::Barbarian() : Character()
     this->amtStrength = 12;
 }
 
-Barbarian::~Barbarian()
-{
-
-}
-
 /******************************************************************************
 ** Barbarian::attack()
-**
+** This is the character's attach method. Will accept arguments of the
+** their special ability (if any) so that it can pass back by reference.
+** This method returns the attack dice roll as an integer.
 *******************************************************************************/
-void Barbarian::attack(Character*& opponent)
+int Barbarian::attack(SpecialAbility& mySpecial)
 {
     int myRoll = myDice.Roll(attackDice, attackSides);
-    cout << "The attacker's attack dice roll is: " << myRoll << endl;
-    opponent->defend(myRoll);
+    cout << "The Barbarian's attack dice " << attackDice << "d" << attackSides << " roll is: " << myRoll << endl;
+    return myRoll;
 }
 
 /******************************************************************************
 ** Barbarian::defend()
-**
+** This is the character's defense method. Will accept arguments of the
+** opponent's roll and their special ability (if any). This method handles
+** all damage and possible death.
 *******************************************************************************/
-void Barbarian::defend(int oppRoll)
+void Barbarian::defend(int oppRoll, SpecialAbility oppSpecial)
 {
     int myRoll = myDice.Roll(defendDice, defendSides);
     int myDefense = myRoll + this->amtArmor;
     int myDamage = 0;
-    cout << "The defenders's defend dice roll is: " << myRoll << endl;
 
-    if (myDefense > oppRoll)
+    //Account for any special abilities from the attacker.
+    switch (oppSpecial)
     {
-        myDamage = 0;
+        case 3: //GLARE
+        {
+            cout << "Medusa has invoked her Glare ability!\nThe Barbarian is turned in to stone!" << endl;
+            myDamage = this->amtStrength;
+            break;
+        }
+        default: //All else.
+        {
+            cout << "The Barbarian's defense dice " << defendDice << "d" << defendSides << " roll is: " << myRoll << endl;
+            if (myDefense > oppRoll)
+            {
+                myDamage = 0;
+            }
+            else
+            {
+                myDamage = oppRoll - myDefense;
+            }
+            break;
+        }
     }
-    else
-    {
-        myDamage = oppRoll - myDefense;
-    }
+
     cout << "The total inflicted damage is: " << myDamage << endl;
 
     this->amtStrength -= myDamage;
@@ -66,7 +86,7 @@ void Barbarian::defend(int oppRoll)
 
 /******************************************************************************
 ** Barbarian::getType()
-**
+** This returns a string of the character's name for the Game class to use.
 *******************************************************************************/
 string Barbarian::getType()
 {

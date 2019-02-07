@@ -1,3 +1,9 @@
+/***************************************************************
+** Program name: Project 3 Fantasy Combate Game (CS162 Winter 2019)
+** Author:       Robert Jones
+** Date:         February 6, 2019
+** Description:  Vampire Class definition file.
+***************************************************************/
 #ifndef VAMPIRE_HPP
 #define VAMPIRE_HPP
 
@@ -8,15 +14,11 @@ using std::string;
 
 class Vampire: public Character
 {
-    private:
-
-    protected:
-
     public:
         Vampire();
-        virtual ~Vampire();
-        virtual void attack(Character*&);
-        virtual void defend(int);
+        virtual ~Vampire() {};
+        virtual int attack(SpecialAbility&);
+        virtual void defend(int, SpecialAbility);
         virtual string getType();
 };
 #endif //Vampire
