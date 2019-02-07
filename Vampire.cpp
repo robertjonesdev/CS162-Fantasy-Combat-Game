@@ -2,7 +2,7 @@
 ** Program name: Project 3 Fantasy Combate Game (CS162 Winter 2019)
 ** Author:       Robert Jones
 ** Date:         February 6, 2019
-** Description:   Vampire class implementation file. 
+** Description:   Vampire class implementation file.
 **               Inherits from Character class.
 ***************************************************************/
 #include "Vampire.hpp"

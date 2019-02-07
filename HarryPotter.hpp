@@ -16,6 +16,7 @@ class HarryPotter : public Character
 {
     private:
         bool hasHogwarts;
+        int rndCounter;
 
     public:
         HarryPotter();

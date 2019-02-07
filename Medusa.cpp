@@ -2,7 +2,7 @@
 ** Program name: Project 3 Fantasy Combate Game (CS162 Winter 2019)
 ** Author:       Robert Jones
 ** Date:         February 6, 2019
-** Description:  Medusa class implementation file. 
+** Description:  Medusa class implementation file.
 **               Inherits from Character class.
 ***************************************************************/
 #include "Medusa.hpp"

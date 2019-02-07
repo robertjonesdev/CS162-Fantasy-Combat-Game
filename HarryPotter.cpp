@@ -2,7 +2,7 @@
 ** Program name: Project 3 Fantasy Combate Game (CS162 Winter 2019)
 ** Author:       Robert Jones
 ** Date:         February 6, 2019
-** Description:  Harry Potter class implementation file. 
+** Description:  Harry Potter class implementation file.
 **               Inherits from Character class.
 ***************************************************************/
 #include "HarryPotter.hpp"
@@ -24,6 +24,7 @@ HarryPotter::HarryPotter(): Character()
     this->amtArmor = 0;
     this->amtStrength = 10;
     this->hasHogwarts = true;
+    this->rndCounter = 0;
 }
 
 /******************************************************************************
@@ -47,6 +48,7 @@ int HarryPotter::attack(SpecialAbility& mySpecial)
 *******************************************************************************/
 void HarryPotter::defend(int oppRoll, SpecialAbility oppSpecial)
 {
+    this->rndCounter++;
     int myRoll = myDice.Roll(defendDice, defendSides);
     int myDefense = myRoll + this->amtArmor;
     int myDamage = 0;
@@ -57,7 +59,14 @@ void HarryPotter::defend(int oppRoll, SpecialAbility oppSpecial)
         case 3: //GLARE
         {
             cout << "Medusa has invoked her Glare ability!\nHarry Potter is turned in to stone!" << endl;
-            myDamage = this->amtStrength;
+            if (this->rndCounter == 1)
+            {
+                cout << "But Harry Potter has come back to life!" << endl;
+            }
+            else
+            {
+                myDamage = this->amtStrength;
+            }
             break;
         }
         default: //All else.

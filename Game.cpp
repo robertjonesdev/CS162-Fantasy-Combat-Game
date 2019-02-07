@@ -2,7 +2,7 @@
 ** Program name: Project 3 Fantasy Combate Game (CS162 Winter 2019)
 ** Author:       Robert Jones
 ** Date:         February 6, 2019
-** Description:  Game class implementation file. 
+** Description:  Game class implementation file.
 ***************************************************************/
 #include <iostream>         //Console output
 #include <iomanip>          //Console output formating
@@ -105,6 +105,7 @@ void Game::playGame()
         }
         else
         {
+            //If player 2 is still alive after Player1's attack then PLayer2 will attack back.
             cout << "\n*** Player 2 attacks Player 1 ***" << endl
                  << "Player 2: ";
             p2Roll = player2->attack(p2Special);
