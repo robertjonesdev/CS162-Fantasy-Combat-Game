@@ -89,5 +89,5 @@ void HarryPotter::defend(int oppRoll, SpecialAbility oppSpecial)
 *******************************************************************************/
 string HarryPotter::getType()
 {
-    return "HarryPotter";
+    return "Harry Potter";
 }

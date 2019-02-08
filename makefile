@@ -1,3 +1,5 @@
+#Adapted from Group 16 Project makefile
+
 #Project name, used for naming zip
 PROJECT = Project3_Jones_Robert
 
