@@ -8,11 +8,9 @@
 #include "HarryPotter.hpp"
 #include "Dice.hpp"
 #include <iostream>
-#include <iomanip>
 
 using std::cout;
 using std::endl;
-using std::setw;
 
 HarryPotter::HarryPotter(): Character()
 {
@@ -62,10 +60,13 @@ void HarryPotter::defend(int oppRoll, SpecialAbility oppSpecial)
             break;
         }
     }
+
+    //Assess the damage to the character
     this->amtStrength -= myDamage;
     cout << "The total inflicted damage is: " << myDamage
          << " and Harry Potter has " << this->amtStrength << " strength points remaining." << endl;
 
+    //Test to see if the character should be dead.
     if (this->amtStrength <= 0)
     {
         //Implement Hogwarts special ability

@@ -8,11 +8,9 @@
 #include "BlueMen.hpp"
 #include "Dice.hpp"
 #include <iostream>
-#include <iomanip>
 
 using std::cout;
 using std::endl;
-using std::setw;
 
 BlueMen::BlueMen(): Character()
 {
@@ -72,10 +70,12 @@ void BlueMen::defend(int oppRoll, SpecialAbility oppSpecial)
         }
     }
 
+    //Assesses damage to strength
     this->amtStrength -= myDamage;
     cout << "The total inflicted damage is: " << myDamage
          << " and the Blue Men have " << this->amtStrength << " strength points remaining." << endl;
 
+    //Checks to see if the character should be dead.
     if (this->amtStrength <= 0)
     {
        this->dead = true;

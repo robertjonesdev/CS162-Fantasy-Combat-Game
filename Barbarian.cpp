@@ -8,11 +8,9 @@
 #include "Barbarian.hpp"
 #include "Dice.hpp"
 #include <iostream>
-#include <iomanip>
 
 using std::cout;
 using std::endl;
-using std::setw;
 
 Barbarian::Barbarian() : Character()
 {

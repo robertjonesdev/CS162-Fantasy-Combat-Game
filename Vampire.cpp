@@ -9,11 +9,9 @@
 #include <string>
 #include "Dice.hpp"
 #include <iostream>
-#include <iomanip>
 
 using std::cout;
 using std::endl;
-using std::setw;
 
 Vampire::Vampire(): Character()
 {
@@ -50,6 +48,7 @@ void Vampire::defend(int oppRoll, SpecialAbility oppSpecial)
         }
         default: //All else.
         {
+            //implement the Vampire's Glare defense ability at 50% probability.
             if (rand () % 2 == 1)
             {
                 cout << "The Vampire's defense dice " << defendDice << "d" << defendSides << " roll is: " << myRoll << endl;
@@ -70,10 +69,12 @@ void Vampire::defend(int oppRoll, SpecialAbility oppSpecial)
         }
     }
 
+    //Assess the damage to the character
     this->amtStrength -= myDamage;
     cout << "The total inflicted damage is: " << myDamage
          << " and the Vampire has " << this->amtStrength << " strength points remaining." << endl;
 
+    //Test to see if the character should be dead.
     if (this->amtStrength <= 0)
     {
        this->dead = true;

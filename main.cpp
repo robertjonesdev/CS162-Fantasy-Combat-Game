@@ -27,6 +27,7 @@ using std::vector;
 
 int main()
 {
+    //Seed the random function for the Dice class.
     srand(time(NULL));
 
     //Create the menu & menu options.
@@ -38,11 +39,14 @@ int main()
     //Loop the menu until user quits.
     while (!menu.getQuit())
     {
+        //Instantiate a Game object and run playGame.
         Game myGame;
         myGame.playGame();
 
         menu.printMenu();
         menu.getChoice();
+
+        //The game will deconstruct and allocated memory will be deleted.
     }
     return 0;
 }

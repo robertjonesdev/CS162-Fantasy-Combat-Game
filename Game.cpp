@@ -92,7 +92,7 @@ void Game::playGame()
              << "Strength: " << setw(10) << player1->getStrength() << "\t" << player2->getStrength() << "\n"
              << "---------------------------------------" << endl;
 
-
+        //Player 1 attacks
         cout << "\n*** Player 1 attacks Player 2 ***" << endl
              << "Player 1: ";
         p1Roll = player1->attack(p1Special);

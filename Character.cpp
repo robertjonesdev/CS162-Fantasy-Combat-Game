@@ -9,12 +9,11 @@
 #include "Character.hpp"
 #include "Dice.hpp"
 #include <iostream>
-#include <iomanip>
 
 using std::cout;
 using std::endl;
-using std::setw;
 
+//Default Constructor
 Character::Character()
 {
     this->dead = false;
@@ -74,8 +73,10 @@ void Character::defend(int oppRoll, SpecialAbility oppSpecial)
     cout << "The total inflicted damage is: " << myDamage
          << " and " << this->getType() << " has " << this->amtStrength << " strength points remaining." << endl;
 
+    //Assess the damage to the characters strength points.
     this->amtStrength -= myDamage;
 
+    //Test to see if the character should be dead.
     if (this->amtStrength <= 0)
     {
        this->dead = true;
@@ -83,16 +84,19 @@ void Character::defend(int oppRoll, SpecialAbility oppSpecial)
 }
 
 //Accessors
+//Returns an integer of amtStrength member variable.
 int Character::getStrength()
 {
     return this->amtStrength;
 }
 
+//Returns an integer of amtArmor member variable.
 int Character::getArmor()
 {
     return this->amtArmor;
 }
 
+//Returns a true/false if the character is dead.
 bool Character::isDead()
 {
     return this->dead;

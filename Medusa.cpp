@@ -12,7 +12,6 @@
 
 using std::cout;
 using std::endl;
-using std::setw;
 
 Medusa::Medusa(): Character()
 {

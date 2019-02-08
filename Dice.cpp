@@ -3,6 +3,9 @@
 ** Author:       Robert Jones
 ** Date:         February 6, 2019
 ** Description:  Dice implementation file
+**
+**               int Roll(int, int): returns an integer value representing
+**               the sum roll of a number of dice with a certain number of sides.
 ***************************************************************/
 #include <ctime>
 #include <cstdlib>
