@@ -30,6 +30,7 @@ Medusa::Medusa(): Character()
 ** This is the character's attach method. Will accept arguments of the
 ** their special ability (if any) so that it can pass back by reference.
 ** This method returns the attack dice roll as an integer.
+** IMPLEMENTS GLARE
 *******************************************************************************/
 int Medusa::attack(SpecialAbility& mySpecial)
 {
@@ -43,51 +44,6 @@ int Medusa::attack(SpecialAbility& mySpecial)
         mySpecial = GLARE;
     }
     return myRoll;
-}
-
-/******************************************************************************
-** Medusa::defend()
-** This is the character's defense method. Will accept arguments of the
-** opponent's roll and their special ability (if any). This method handles
-** all damage and possible death.
-*******************************************************************************/
-void Medusa::defend(int oppRoll, SpecialAbility oppSpecial)
-{
-    int myRoll = myDice.Roll(defendDice, defendSides);
-    int myDefense = myRoll + this->amtArmor;
-    int myDamage = 0;
-
-    //Account for any special abilities from the attacker.
-    switch (oppSpecial)
-    {
-        case 3: //GLARE
-        {
-            cout << "Medusa has invoked her Glare ability!\nMedusa is turned in to stone!" << endl;
-            myDamage = this->amtStrength;
-            break;
-        }
-        default: //All else.
-        {
-            cout << "The Medusa's defense dice " << defendDice << "d" << defendSides << " roll is: " << myRoll << endl;
-            if (myDefense > oppRoll)
-            {
-                myDamage = 0;
-            }
-            else
-            {
-                myDamage = oppRoll - myDefense;
-            }
-            break;
-        }
-    }
-    this->amtStrength -= myDamage;
-    cout << "The total inflicted damage is: " << myDamage
-         << " and Medusa has " << this->amtStrength << " strength points remaining." << endl;
-
-    if (this->amtStrength <= 0)
-    {
-       this->dead = true;
-    }
 }
 
 /******************************************************************************

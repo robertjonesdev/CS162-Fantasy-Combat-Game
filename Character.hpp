@@ -28,16 +28,16 @@ class Character
 
     public:
         Character();
-        virtual ~Character();
+        virtual ~Character() {};
 
         //Accessors
-        virtual string getType() = 0;
         int getStrength();
         int getArmor();
         virtual bool isDead();
-
+        virtual string getType() = 0;
+        
         //functions
-        virtual int attack(SpecialAbility&) = 0;
-        virtual void defend(int, SpecialAbility) = 0;
+        virtual int attack(SpecialAbility&);
+        virtual void defend(int, SpecialAbility);
 };
 #endif //Character

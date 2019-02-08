@@ -18,7 +18,6 @@ class Medusa : public Character
         Medusa();
         virtual ~Medusa() {};
         virtual int attack(SpecialAbility&);
-        virtual void defend(int, SpecialAbility);
         virtual string getType();
 };
 #endif //Medusa

@@ -27,23 +27,11 @@ Vampire::Vampire(): Character()
 }
 
 /******************************************************************************
-** Vampire::attack()
-** This is the character's attach method. Will accept arguments of the
-** their special ability (if any) so that it can pass back by reference.
-** This method returns the attack dice roll as an integer.
-*******************************************************************************/
-int Vampire::attack(SpecialAbility& mySpecial)
-{
-    int myRoll = myDice.Roll(attackDice, attackSides);
-    cout << "The Vampire's attack dice " << attackDice << "d" << attackSides << " roll is: " << myRoll << endl;
-    return myRoll;
-}
-
-/******************************************************************************
 ** Vampire::defend()
 ** This is the character's defense method. Will accept arguments of the
 ** opponent's roll and their special ability (if any). This method handles
 ** all damage and possible death.
+** IMPLEMENTS CHARM
 *******************************************************************************/
 void Vampire::defend(int oppRoll, SpecialAbility oppSpecial)
 {

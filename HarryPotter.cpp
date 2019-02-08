@@ -24,20 +24,6 @@ HarryPotter::HarryPotter(): Character()
     this->amtArmor = 0;
     this->amtStrength = 10;
     this->hasHogwarts = true;
-    this->rndCounter = 0;
-}
-
-/******************************************************************************
-** HarryPotter::attack()
-** This is the character's attach method. Will accept arguments of the
-** their special ability (if any) so that it can pass back by reference.
-** This method returns the attack dice roll as an integer.
-*******************************************************************************/
-int HarryPotter::attack(SpecialAbility& mySpecial)
-{
-    int myRoll = myDice.Roll(attackDice, attackSides);
-    cout << "Harry Potter's attack dice " << attackDice << "d" << attackSides << " roll is: " << myRoll << endl;
-    return myRoll;
 }
 
 /******************************************************************************
@@ -45,10 +31,10 @@ int HarryPotter::attack(SpecialAbility& mySpecial)
 ** This is the character's defense method. Will accept arguments of the
 ** opponent's roll and their special ability (if any). This method handles
 ** all damage and possible death.
+** IMPLEMENTS HOGWARTS
 *******************************************************************************/
 void HarryPotter::defend(int oppRoll, SpecialAbility oppSpecial)
 {
-    this->rndCounter++;
     int myRoll = myDice.Roll(defendDice, defendSides);
     int myDefense = myRoll + this->amtArmor;
     int myDamage = 0;
@@ -59,14 +45,7 @@ void HarryPotter::defend(int oppRoll, SpecialAbility oppSpecial)
         case 3: //GLARE
         {
             cout << "Medusa has invoked her Glare ability!\nHarry Potter is turned in to stone!" << endl;
-            if (this->rndCounter == 1)
-            {
-                cout << "But Harry Potter has come back to life!" << endl;
-            }
-            else
-            {
-                myDamage = this->amtStrength;
-            }
+            myDamage = this->amtStrength;
             break;
         }
         default: //All else.

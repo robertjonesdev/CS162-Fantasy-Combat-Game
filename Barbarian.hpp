@@ -17,8 +17,6 @@ class Barbarian: public Character
     public:
         Barbarian();
         virtual ~Barbarian() {};
-        virtual int attack(SpecialAbility&);
-        virtual void defend(int, SpecialAbility);
         virtual string getType();
 };
 #endif //Barbarian

@@ -1,3 +1,9 @@
+/***************************************************************
+** Program name: Project 3 Fantasy Combate Game (CS162 Winter 2019)
+** Author:       Robert Jones
+** Date:         February 6, 2019
+** Description:  Dice implementation file
+***************************************************************/
 #include <ctime>
 #include <cstdlib>
 #include "Dice.hpp"

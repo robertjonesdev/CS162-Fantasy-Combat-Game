@@ -17,7 +17,6 @@ class Vampire: public Character
     public:
         Vampire();
         virtual ~Vampire() {};
-        virtual int attack(SpecialAbility&);
         virtual void defend(int, SpecialAbility);
         virtual string getType();
 };

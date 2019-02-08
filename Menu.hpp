@@ -1,7 +1,7 @@
-/*********************************************************************
-** Program name:  Lab 4, CS 162-400, Winter 2019
+b/*********************************************************************
+** Program name:  Project 3 Fantasy Combate Game (CS162 Winter 2019)
 ** Author:        Robert Jones
-** Date:          January 29, 2019
+** Date:          February 6, 2019
 ** Description:   Menu.hpp, Menu Class Definition
 *********************************************************************/
 

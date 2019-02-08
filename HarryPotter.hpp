@@ -16,12 +16,10 @@ class HarryPotter : public Character
 {
     private:
         bool hasHogwarts;
-        int rndCounter;
 
     public:
         HarryPotter();
         virtual ~HarryPotter() {};
-        virtual int attack(SpecialAbility&);
         virtual void defend(int, SpecialAbility);
         virtual string getType();
 };

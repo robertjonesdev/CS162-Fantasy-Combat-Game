@@ -17,7 +17,6 @@ class BlueMen : public Character
     public:
         BlueMen();
         virtual ~BlueMen() {};
-        virtual int attack(SpecialAbility&);
         virtual void defend(int, SpecialAbility);
         virtual string getType();
 };

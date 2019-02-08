@@ -2,7 +2,7 @@
 ** Program name: Project 3 Fantasy Combate Game (CS162 Winter 2019)
 ** Author:       Robert Jones
 ** Date:         February 6, 2019
-** Description:  Blue Men class implementation file. 
+** Description:  Blue Men class implementation file.
 **               Inherits from Character class.
 ***************************************************************/
 #include "BlueMen.hpp"
@@ -25,25 +25,12 @@ BlueMen::BlueMen(): Character()
     this->amtStrength = 12;
 }
 
-
-/******************************************************************************
-** BlueMen::attack()
-** This is the character's attach method. Will accept arguments of the
-** their special ability (if any) so that it can pass back by reference.
-** This method returns the attack dice roll as an integer.
-*******************************************************************************/
-int BlueMen::attack(SpecialAbility& mySpecial)
-{
-    int myRoll = myDice.Roll(attackDice, attackSides);
-    cout << "The Blue Mens attack dice " << attackDice << "d" << attackSides << " roll is: " << myRoll << endl;
-    return myRoll;
-}
-
 /******************************************************************************
 ** BlueMen::defend()
 ** This is the character's defense method. Will accept arguments of the
 ** opponent's roll and their special ability (if any). This method handles
 ** all damage and possible death.
+**IMPLEMENTS MOB
 *******************************************************************************/
 void BlueMen::defend(int oppRoll, SpecialAbility oppSpecial)
 {
