@@ -1,41 +1,52 @@
-#Adapted from Group 16 Project makefile
+#Adapted from the tutorial "How to Create a Simple Makefile - Introduction to Makefiles"
+#https://www.youtube.com/watch?v=_r7i5X0rXJk
+#and "A Simple Makefile Tutorial"
+#http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/
 
-#Project name, used for naming zip
+CC = g++
+CFLAGS = -g -std=c++11 -MD -MP
+OBJ = main.o Menu.o Barbarian.o BlueMen.o Character.o Dice.o Game.o HarryPotter.o Medusa.o Vampire.o
 PROJECT = Project3_Jones_Robert
-
-#Final executable name
 BIN = Fantasy-Combat
 
-#automatically includes all cpp files in directory
-SOURCES = $(wildcard *.cpp)
-OBJECTS = $(SOURCES:%.cpp=%.o)
+$(BIN): $(OBJ)
+	$(CC) -o $@ $(CFLAGS) $(OBJ)
 
-#generates dependencies automatically, adopted from https://stackoverflow.com/a/21086223
-CXX = g++
-CXXFLAGS = -std=c++11 -MD -MP -g
-$(BIN): $(OBJECTS)
-	${CXX} ${CXXFLAGS} -o $@ $^
+main.o: main.cpp
+	$(CC) -c $(CFLAGS) $^
 
--include $(SOURCES:%.cpp=%.d)
+Menu.o: Menu.cpp
+	$(CC) -c $(CFLAGS) $^
 
-#allows memory leak checking with "make valgrind"
-.PHONY : valgrind
+Barbarian.o: Barbarian.cpp
+	$(CC) -c $(CFLAGS) $^
+
+BlueMen.o: BlueMen.cpp
+	$(CC) -c $(CFLAGS) $^
+
+Character.o: Character.cpp
+	$(CC) -c $(CFLAGS) $^
+
+Dice.o: Dice.cpp
+	$(CC) -c $(CFLAGS) $^
+
+Game.o: Game.cpp
+	$(CC) -c $(CFLAGS) $^
+
+HarryPotter.o: HarryPotter.cpp
+	$(CC) -c $(CFLAGS) $^
+
+Medusa.o: Medusa.cpp
+	$(CC) -c $(CFLAGS) $^
+
+Vampire.o: Vampire.cpp
+		$(CC) -c $(CFLAGS) $^
+
 valgrind:
 	@valgrind --leak-check=full --track-origins=yes ./$(BIN)
 
-#zips all cpp hpp pdf and makefiles with "make zip"
-.PHONY : zip
 zip:
-	zip $(PROJECT).zip *.cpp *.hpp *.pdf makefile
+	zip -D $(PROJECT).zip *.cpp *.hpp *.pdf makefile
 
-#makes "make clean" work on Windows too, adapted from https://stackoverflow.com/questions/2463037/calling-windows-commands-e-g-del-from-a-gnu-makefile
-ifeq ($(OS),Windows_NT)
-    RM = cmd /C del /Q /F
-else
-    RM = rm -f
-endif
-
-#removes binary, .d (dependency), .o files
-.PHONY : clean
 clean:
-	$(RM) $(BIN) *.d *.o core
+	rm -f core $(OBJ) *.d *~ $(BIN)

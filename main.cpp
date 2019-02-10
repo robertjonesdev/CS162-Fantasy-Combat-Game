@@ -36,6 +36,8 @@ int main()
     menuList.push_back("Play again");
     Menu menu(menuTitle, menuList);
 
+    std::cout << menuTitle << std::endl;
+    
     //Loop the menu until user quits.
     while (!menu.getQuit())
     {
